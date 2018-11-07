@@ -1,8 +1,14 @@
+import Data.DataProcess;
+import ParaStructure.KVPara.CatParaList;
+import ParaStructure.KVPara.FeatureParaList;
+import KVStore.ParaKVStore;
+import ParaPartition.ModelPartition;
+import ParaStructure.Partitioning.PartitionList;
+import ParaStructure.Sample.SampleList;
+import Util.AccessTimeTest;
 import org.iq80.leveldb.DB;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LogisticRegression {
     static int featureSize= 13;
@@ -11,6 +17,7 @@ public class LogisticRegression {
 
 
     public static void main(String[] args) throws IOException,ClassNotFoundException {
+        long startTime,endTime;
         String fileName="data/10000.txt";
         SampleList sampleList=new SampleList();
 
@@ -31,22 +38,27 @@ public class LogisticRegression {
         featureParaList.featureParaList=paraKVStore.initFeaturePara(featureSize);
         catParaList.catParaList=paraKVStore.initCatPara(bestPartitionList);
         DB db=paraKVStore.initParaKVstore(featureParaList,catParaList,sampleList.sparseDimSize);
-
-        /*获取并转换feature*/
-        byte[] bytes=db.get(("f").getBytes());
-        FeatureParaList readFeatParaList=(FeatureParaList) TypeExchangeUtil.toObject(bytes);
-
-        /*获取并转换cat属性*/
-        CatParaList readCatParaList=new CatParaList();
-        bytes=db.get(("c1").getBytes());
-        readCatParaList.catParaList.add((ParaKVPartition)TypeExchangeUtil.toObject(bytes));
-
-        /*获取single category，并转换*/
-        ParaKV singleC;
-        bytes=db.get(("sc100").getBytes());
-        singleC=(ParaKV) TypeExchangeUtil.toObject(bytes);
+        paraKVStore.db=db;
+        sparseDimSize=sampleList.sparseDimSize;
 
 
-        System.out.println("ss");
+        /*遍历所有的样本，一个一个样本的读取所有数据*/
+        startTime=System.currentTimeMillis();
+        AccessTimeTest.accessTimeTest(sampleList,bestPartitionList,paraKVStore);
+        endTime=System.currentTimeMillis();
+        System.out.println(endTime-startTime);
+
+        /*构建一个大小sparseDimSize的参数模型，然后一条数据一条数据读*/
+        AccessTimeTest.initPara(sparseDimSize,db);
+        startTime=System.currentTimeMillis();
+        AccessTimeTest.getPara(sampleList,db);
+        endTime=System.currentTimeMillis();
+        System.out.println(endTime-startTime);
+
+        db.close();
     }
+
+
+
+
 }
