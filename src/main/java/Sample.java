@@ -1,3 +1,5 @@
+package ParameterPartition;
+
 public class Sample {
     boolean click;
     float feature[];

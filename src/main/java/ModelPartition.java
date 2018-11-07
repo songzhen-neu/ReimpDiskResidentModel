@@ -1,3 +1,7 @@
+package ParameterPartition;
+
+import ParameterPartition.Partition;
+import ParameterPartition.PartitionList;
 import com.yahoo.sketches.quantiles.DoublesSketch;
 import com.yahoo.sketches.quantiles.UpdateDoublesSketch;
 
