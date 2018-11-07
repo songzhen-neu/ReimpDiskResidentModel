@@ -8,5 +8,12 @@
     <artifactId>CtrForBigModel</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.iq80.leveldb</groupId>
+            <artifactId>leveldb</artifactId>
+            <version>0.10</version>
+        </dependency>
+    </dependencies>
 
 </project>

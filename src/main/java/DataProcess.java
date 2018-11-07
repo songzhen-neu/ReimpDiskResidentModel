@@ -97,7 +97,7 @@ public class DataProcess {
     }
 
 
-    public static SampleList linerNormalizition(SampleList sampleList){  // 这里标准化是为了提升训练精度。那么也就是(a-amin)/(amax-amin)，一定落在(0,1)区间内
+    public static SampleList linerNormalization(SampleList sampleList){  // 这里标准化是为了提升训练精度。那么也就是(a-amin)/(amax-amin)，一定落在(0,1)区间内
         /*首先应该获取每一个属性栏最大和最小的参数，这里应该只对feature属性来做，因为cat属性只表示这意味出不出现，不表示具体值
         * 规范化这里究竟是否要真的使用max是有争议的，因为，可能噪声导致了部分数据值异常大，而影响了整体精度
         *

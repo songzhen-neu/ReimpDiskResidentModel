@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModelPartition {
-    public static void modelPartition(SampleList sampleList){
+    public static PartitionList modelPartition(SampleList sampleList){
         int sparseDimSize= sampleList.sparseDimSize;
-        float pruneRate=0.10f;
+        float pruneRate=0.001f;
         List<Integer> prunedSparseDim=new ArrayList<Integer>();
         /*剪枝*/
         prunedSparseDim=prune(sampleList,pruneRate);
@@ -28,7 +28,7 @@ public class ModelPartition {
             }
         }
 
-        System.out.println("sss");
+        return bestPartitionList;
 
     }
 
