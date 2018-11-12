@@ -14,42 +14,31 @@ import java.util.List;
 
 public class AccessTimeTest {
 
-    public static void accessTimeTest(SampleList sampleList, PartitionList bestPartitionList, ParaKVStore paraKVStore) throws IOException,ClassNotFoundException{
-        DB db=paraKVStore.db;
-        InvertIndex invertIndexes=new InvertIndex();
-        for(int i=0;i<sampleList.sampleListSize;i++){
-            /*readCatIndex和readSingleCIndex分别表示读进内存的catPartition和读进内存的Cat*/
-            FeatureParaList readFeatureParaList=new FeatureParaList();
-            CatParaList readCatParaList=new CatParaList();
-            List<String> readCatIndex=new ArrayList<String>();
-            List<String> readSingleCIndex=new ArrayList<String>();
-            /*先建立一个invertIndex来确定每条数据需要哪些维度*/
-            InvertIndex invertIndex= InvertIndex.buildIvertIndex(sampleList.sampleList.get(i),bestPartitionList);
-            for(int j=0;j<invertIndex.invertIndex.size();j++){
-                invertIndexes.invertIndex.add(invertIndex.invertIndex.get(j));
-            }
+    public static void accessTimeTest(SampleList sampleList, PartitionList bestPartitionList, ParaKVStore paraKVStore) throws IOException, ClassNotFoundException {
+        /**
+        *@Description: 这个读取就是按照sampleList去读取的
+         * 对于mini-batch的方法，sampleList中一个sample就是一个“batch”所需要的访问的维度
+         * 对于SGD的方法，sampleList中一个sample就是一条“data”需要访问的维度
+        *@Param:
+         * sampleList：对于batch的方法，sample里只需要包含int[] cat，也就是这个batch需要访问的离散属性就可以了
+         * bestPartitionList：PartitionList，是最佳划分,
+         * paraKVStore：就是KVStore
+        *@return: void
+        *@Author: SongZhen
+        *@date: 下午8:14 18-11-12
+        */
 
+        List<InvertIndex> invertIndices=new ArrayList<InvertIndex>();
+        for (int i = 0; i < sampleList.sampleListSize; i++) {
+            // 先建立一个invertIndex来确定每条数据需要哪些维度,相同维度要去重
+            InvertIndex invertIndex = InvertIndex.buildInvertIndex(sampleList.sampleList.get(i), bestPartitionList);
+            invertIndices.add(invertIndex);
 
-            /*测试一条一条读数据，然后读取model*/
-
-            if(i%100==0){
-                for(String index:invertIndex.invertIndex){
-                    if(index.indexOf("c")!=-1&&readCatIndex.contains(index)==false){
-                        ParaKVPartition paraKVPartition=(ParaKVPartition) paraKVStore.getParameter(index,db);
-                        readCatParaList.catParaList.add(paraKVPartition);
-                        readCatIndex.add(index);
-
-                    }
-                    else if(index.indexOf("s")!=-1&&readSingleCIndex.contains(index)==false){
-                        ParaKV paraKV=(ParaKV) paraKVStore.getParameter(index,db);
-                        readFeatureParaList.featureParaList.add(paraKV);
-                    }
-                }
-                invertIndexes.invertIndex.clear();
-            }
-
-
+            // 按照生成的反向索引，一个一个sample（对于SGD是一个data，对于MiniBGD是一个batch）去读取
+            ParaKVStore.readParaByInvertIndex(invertIndex,paraKVStore);
         }
+
+
     }
 
 
@@ -57,7 +46,7 @@ public class AccessTimeTest {
     public static void initPara(int sparseDimSize,DB db) throws IOException{
         for(int i=0;i<sparseDimSize;i++){
             ParaKV paraKV=new ParaKV(i,(RandomUtil.getRandomValue(-0.1f,0.1f)));
-            db.put(("t"+i).getBytes(),TypeExchangeUtil.toByteArray(paraKV));
+            db.put(("c"+i).getBytes(),TypeExchangeUtil.toByteArray(paraKV));
         }
     }
 
@@ -66,28 +55,21 @@ public class AccessTimeTest {
 
         InvertIndex invertIndexes=new InvertIndex();
         for(int i=0;i<sampleList.sampleListSize;i++){
-            int[] cat=sampleList.sampleList.get(i).cat;
-            /*一条数据的inverIndex*/
-            InvertIndex invertIndex=new InvertIndex();
-            for(int j=0;j<cat.length;j++){
-                if (invertIndex.invertIndex.contains(cat[j])==false){
-                    invertIndex.invertIndex.add("t"+cat[j]);
-                }
-            }
-            for(int l=0;l<invertIndex.invertIndex.size();l++){
-                invertIndexes.invertIndex.add(invertIndex.invertIndex.get(l));
+            int[] cats=sampleList.sampleList.get(i).cat;
+            for(int cat:cats){
+                db.get(("c"+cat).getBytes());
             }
 
-            if(i%100==0){
-                for(int m=0;m<invertIndexes.invertIndex.size();m++){
-                    db.get((invertIndexes.invertIndex.get(m)).getBytes());
-                }
-                invertIndexes.invertIndex.clear();
-            }
         }
 
 
     }
+
+
+
+
+
+
 
 
 }

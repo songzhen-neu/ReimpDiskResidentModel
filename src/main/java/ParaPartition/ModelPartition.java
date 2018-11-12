@@ -1,10 +1,12 @@
 package ParaPartition;
 
 import Data.DiskAccessTime;
+import Global.Global;
 import ParaStructure.Partitioning.AFMatrix;
 import ParaStructure.Partitioning.Partition;
 import ParaStructure.Partitioning.PartitionList;
 import ParaStructure.Sample.SampleList;
+import Util.Prune;
 import com.yahoo.sketches.quantiles.DoublesSketch;
 import com.yahoo.sketches.quantiles.UpdateDoublesSketch;
 
@@ -12,12 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModelPartition {
-    public static PartitionList modelPartition(SampleList sampleList){
+    public static PartitionList modelPartition(SampleList sampleList,List<Integer> prunedSparseDim){
         int sparseDimSize= sampleList.sparseDimSize;
-        float pruneRate=0.001f;
-        List<Integer> prunedSparseDim=new ArrayList<Integer>();
-        /*剪枝*/
-        prunedSparseDim=prune(sampleList,pruneRate);
+
         int prunedSparseDimSize=prunedSparseDim.size();
         PartitionList partitionList=  initPartition(prunedSparseDim);
 
@@ -52,7 +51,6 @@ public class ModelPartition {
     }
 
     public static PartitionList bestModelPartition(SampleList sampleList, List<Integer> prunedSparseDim, PartitionList partitionList){
-        DiskAccessTime diskAccessTime=new DiskAccessTime(0.00002f,5.0f);
         int catSize=sampleList.catSize;
         int sampleListSize=sampleList.sampleListSize;
         int partitionListSize=partitionList.partitionList.size();
@@ -81,7 +79,7 @@ public class ModelPartition {
         * 前面已经把初始的AF矩阵计算好了，后面就不需要遍历数据了，只需要遍历AF矩阵即可
         * 毫无疑问这个计算最佳划分函数肯定是一个递归函数
         * */
-        bestPartitionList=computeBestMerge(afMatrix,diskAccessTime,sampleList,prunedSparseDim);
+        bestPartitionList=computeBestMerge(afMatrix,sampleList,prunedSparseDim);
 
 
 
@@ -141,52 +139,21 @@ public class ModelPartition {
         return AF;
     }
 
-    public static List<Integer> prune(SampleList sampleList, float pruneRate){
-        /*先遍历数据将数据每个维度出现的次数做成一个数组*/
-        int sparseDimSize=sampleList.sparseDimSize;
-        int[] countSparseDimFreq=new int[sparseDimSize];
-        List<Integer> prunedSparseDim=new ArrayList<Integer>();
 
 
-        for(int i=0;i<sampleList.sampleListSize;i++){
-            for(int j=0;j<sampleList.catSize;j++){
-                int[] cat=sampleList.sampleList.get(i).cat;
-                if(cat[j]!=-1){
-                    countSparseDimFreq[cat[j]]++;
-                }
-            }
-        }
-
-        UpdateDoublesSketch updateDoublesSketch=DoublesSketch.builder().build();
-        for(int i=0;i<sparseDimSize;i++){
-            updateDoublesSketch.update(countSparseDimFreq[i]);
-        }
-
-
-        Double freqThreshold=updateDoublesSketch.getQuantile(1.0-pruneRate);
-        System.out.println("threshold:"+freqThreshold);
-        for(int i=0;i<countSparseDimFreq.length;i++){
-            if(countSparseDimFreq[i]>=freqThreshold){
-                prunedSparseDim.add(i);
-            }
-        }
-
-        return prunedSparseDim;
-    }
-
-    public static PartitionList computeBestMerge(AFMatrix afMatrix, DiskAccessTime diskAccessTime, SampleList sampleList, List<Integer> prunedSparseDim){
+    public static PartitionList computeBestMerge(AFMatrix afMatrix, SampleList sampleList, List<Integer> prunedSparseDim){
         /*先进行第一次计算和合并*/
-        int minGain=200;
+        float minGain=0f;
         int partitionListSize=afMatrix.partitionList.partitionList.size();
         for(int i=0;i<partitionListSize;i++){
             for(int j=0;j<partitionListSize;j++){
                 if(i==j){
                     //前面的参数是磁盘访问的两个时间（seek和read），后面是partition[i]包含的Dim个数
-                    afMatrix.costTime[i][i]=afMatrix.AF[i][i]*cost(diskAccessTime,afMatrix.partitionList.partitionList.get(i).partition.size());
+                    afMatrix.costTime[i][i]=afMatrix.AF[i][i]*cost(afMatrix.partitionList.partitionList.get(i).partition.size());
                 }
                 else {
                     int mergePartitionSize=afMatrix.partitionList.partitionList.get(i).partition.size()+ afMatrix.partitionList.partitionList.get(j).partition.size();
-                    afMatrix.costTime[i][j]=(afMatrix.AF[i][i]+afMatrix.AF[j][j]-afMatrix.AF[i][j])*cost(diskAccessTime,mergePartitionSize);
+                    afMatrix.costTime[i][j]=(afMatrix.AF[i][i]+afMatrix.AF[j][j]-afMatrix.AF[i][j])*cost(mergePartitionSize);
                 }
             }
 
@@ -229,7 +196,7 @@ public class ModelPartition {
 
         afMatrix.AF=buildAF(afMatrix.partitionList,sampleList,prunedSparseDim);
 
-        return computeBestMerge(afMatrix,diskAccessTime,sampleList,prunedSparseDim);
+        return computeBestMerge(afMatrix,sampleList,prunedSparseDim);
 
     }
 
@@ -248,9 +215,14 @@ public class ModelPartition {
      * @return 返回访问这个Pi的时间成本
      * */
 
-    public static float cost(DiskAccessTime diskAccessTime, int singlePartitionSize){
+    public static float cost( int singlePartitionSize){
 
-        return (diskAccessTime.seekSingleTime+singlePartitionSize*diskAccessTime.readSingleDimTime);
+        return (Global.diskAccessTime.seekSingleTime+singlePartitionSize*Global.diskAccessTime.readSingleDimTime);
     }
+
+
+
+
+
 
 }

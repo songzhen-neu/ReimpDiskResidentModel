@@ -2,43 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cab8d732-a94e-4429-8ded-7e591dca400e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/InvertIndex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Util/AccessTimeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Util/RandomUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Global/Global.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ParaPartition/BatchBasedModelPartition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/DimensionAccess/NewIndexOfNeed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/DimensionAccess/NewIndexOfNeedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Util/BatchBasedPartitionTimeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Util/CurrentTimeUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Util/DataProcessUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Util/MemoryUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Util/Prune.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/000003.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db/MANIFEST-000002" beforeDir="false" afterPath="$PROJECT_DIR$/data/db/MANIFEST-000002" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AFMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/Partitioning/AFMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CatParaList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/CatParaList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DataProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/DataProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DiskAccessTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/DiskAccessTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FeatureParaList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/FeatureParaList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/InvertIndex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/000004.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/000005.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/CURRENT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/LOCK" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db/MANIFEST-000002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data/DataProcess.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/KVStore/ParaKVStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KVStore/ParaKVStore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/LogisticRegression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/LogisticRegression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ModelPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaKV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/ParaKV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaKVPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/ParaKVPartition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ParaKVStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/KVStore/ParaKVStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Partition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/Partitioning/Partition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PartitionList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/Partitioning/PartitionList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/Sample/Sample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SampleList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/Sample/SampleList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Util/TypeExchangeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Util/TypeExchangeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AFMatrix.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CatParaList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataProcess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DiskAccessTime.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FeatureParaList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/InvertIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/InvertIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ParaStructure/Sample/Sample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParaStructure/Sample/Sample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Util/AccessTimeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Util/AccessTimeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Data/DataProcess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/KVStore/ParaKVStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/KVStore/ParaKVStore.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/LogisticRegression.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/LogisticRegression.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ModelPartition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaKV.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaKVPartition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ParaKVStore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Partition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PartitionList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Sample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SampleList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TypeExchangeUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaPartition/ModelPartition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ParaPartition/ModelPartition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ParaStructure/Sample/Sample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ParaStructure/Sample/Sample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Util/AccessTimeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Util/AccessTimeTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -49,27 +40,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/CtrForBigModel$LogisticRegression.ic" NAME="LogisticRegression Coverage Results" MODIFIED="1541922204219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="AccessTimeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Util/AccessTimeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+            <state relative-caret-position="269">
+              <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#839#847#0" expanded="true" />
-                <element signature="e#906#914#0" expanded="true" />
+                <element signature="e#1012#1025#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArrayList.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///opt/jvm/jdk1.8.0_171/src.zip!/java/util/ArrayList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="432" selection-start-line="432" selection-end-line="432" />
             </state>
           </provider>
         </entry>
@@ -77,8 +61,21 @@
       <file leaf-file-name="InvertIndex.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/InvertIndex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="45" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="45" />
+            <state relative-caret-position="6">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#290#298#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogisticRegression.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/LogisticRegression.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="126" column="41" lean-forward="true" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,11 +83,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DiskAccessTime.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Data/DiskAccessTime.java">
+      <file leaf-file-name="CurrentTimeUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Util/CurrentTimeUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+            <state relative-caret-position="75">
+              <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+              <folding>
+                <element signature="e#127#128#0" expanded="true" />
+                <element signature="e#151#152#0" expanded="true" />
+                <element signature="e#190#191#0" expanded="true" />
+                <element signature="e#214#215#0" expanded="true" />
+                <element signature="e#284#285#0" expanded="true" />
+                <element signature="e#302#303#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,8 +103,8 @@
       <file leaf-file-name="ParaKVStore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/KVStore/ParaKVStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18">
-              <caret line="66" column="85" selection-start-line="66" selection-start-column="85" selection-end-line="66" selection-end-column="85" />
+            <state relative-caret-position="913">
+              <caret line="156" column="104" selection-start-line="156" selection-start-column="104" selection-end-line="156" selection-end-column="104" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,24 +112,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RandomUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Util/RandomUtil.java">
+      <file leaf-file-name="Global.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Global/Global.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+            <state relative-caret-position="105">
+              <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModelPartition.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java">
+      <file leaf-file-name="MemoryUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Util/MemoryUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="244" column="6" lean-forward="true" selection-start-line="244" selection-start-column="6" selection-end-line="244" selection-end-column="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5532#5541#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -147,11 +148,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogisticRegression.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/LogisticRegression.java">
+      <file leaf-file-name="ModelPartition.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+            <state relative-caret-position="285">
+              <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -169,6 +173,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>normal</find>
+      <find>public static PartitionList statisticBatchBasedModelPartition\(SampleList sampleList\,int batchSize\)\{\n        PartitionList partitionList\=new PartitionList\(\)\;\n        for\(int i\=0\;i\&lt;sampleList\.sampleListSize\;i\=i\+batchSize\)\{  \/\/遍历整个数据集\n            Partition partition\=new Partition\(\)\;\n            for\(int j\=i\;j\&lt;i\+batchSize\;j\+\+\)\{ \/\/ 遍历一个batch的数据集\n                    int\[\] cat\=sampleList\.sampleList\.get\(j\)\.cat\;\n                    System\.out\.println\(j\)\;\n                    for\(int k\=0\;k\&lt;cat\.length\;k\+\+\)\{ \/\/遍历一个数据的cat\n                        if\(cat\[k\]\!\=\-1\&amp;\&amp;partition\.partition\.contains\(cat\[k\]\)\=\=false\)\{\n                            partition\.partition\.add\(cat\[k\]\)\;\n                        \}\n                    \}\n            \}\n            partitionList\.partitionList\.add\(partition\)\;\n        \}\n        return partitionList\;\n    \}</find>
+      <find>statisticSameDimOfAdjBatch</find>
+      <find>disk</find>
+      <find>public static void accessTimeTest\(SampleList sampleList\, PartitionList bestPartitionList\, ParaKVStore paraKVStore\) throws IOException\,ClassNotFoundException\{\n        DB db\=paraKVStore\.db\;\n\n        for\(int i\=0\;i\&lt;sampleList\.sampleListSize\;i\+\+\)\{\n            \/\*readCatIndex和readSingleCIndex分别表示读进内存的catPartition和读进内存的Cat\*\/\n            InvertIndex invertIndexes\=new InvertIndex\(\)\;\n            FeatureParaList readFeatureParaList\=new FeatureParaList\(\)\;\n            CatParaList readCatParaList\=new CatParaList\(\)\;\n            List\&lt;String\&gt; readCatIndex\=new ArrayList\&lt;String\&gt;\(\)\;\n            List\&lt;String\&gt; readSingleCIndex\=new ArrayList\&lt;String\&gt;\(\)\;\n            \/\*先建立一个invertIndex来确定每条数据需要哪些维度\*\/\n            InvertIndex invertIndex\= InvertIndex\.buildIvertIndex\(sampleList\.sampleList\.get\(i\)\,bestPartitionList\)\;\n            for\(int j\=0\;j\&lt;invertIndex\.invertIndex\.size\(\)\;j\+\+\)\{\n                String index\=invertIndex\.invertIndex\.get\(j\)\;\n                invertIndexes\.invertIndex\.add\(index\)\;\n                \n                if\(index\.indexOf\(\&quot;c\&quot;\)\!\=\-1\&amp;\&amp;readCatIndex\.contains\(index\)\=\=false\)\{\n                        ParaKVPartition paraKVPartition\=\(ParaKVPartition\) paraKVStore\.getParameter\(index\,db\)\;\n                        readCatParaList\.catParaList\.add\(paraKVPartition\)\;\n                        readCatIndex\.add\(index\)\;\n\n                    \}\n                    else if\(index\.indexOf\(\&quot;s\&quot;\)\!\=\-1\&amp;\&amp;readSingleCIndex\.contains\(index\)\=\=false\)\{\n                        ParaKV paraKV\=\(ParaKV\) paraKVStore\.getParameter\(index\,db\)\;\n                        readFeatureParaList\.featureParaList\.add\(paraKV\)\;\n                    \}\n\n            \}\n\n\n\n\n\n\n            \/\*测试一条一条读数据\，然后读取model\*\/\n\n\/\/            if\(i\%100\=\=0\)\{\n\/\/                for\(String index\:invertIndex\.invertIndex\)\{\n\/\/                    if\(index\.indexOf\(\&quot;c\&quot;\)\!\=\-1\&amp;\&amp;readCatIndex\.contains\(index\)\=\=false\)\{\n\/\/                        ParaKVPartition paraKVPartition\=\(ParaKVPartition\) paraKVStore\.getParameter\(index\,db\)\;\n\/\/                        readCatParaList\.catParaList\.add\(paraKVPartition\)\;\n\/\/                        readCatIndex\.add\(index\)\;\n\/\/\n\/\/                    \}\n\/\/                    else if\(index\.indexOf\(\&quot;s\&quot;\)\!\=\-1\&amp;\&amp;readSingleCIndex\.contains\(index\)\=\=false\)\{\n\/\/                        ParaKV paraKV\=\(ParaKV\) paraKVStore\.getParameter\(index\,db\)\;\n\/\/                        readFeatureParaList\.featureParaList\.add\(paraKV\)\;\n\/\/                    \}\n\/\/                \}\n\/\/                invertIndexes\.invertIndex\.clear\(\)\;\n\/\/            \}\n\n\n        \}</find>
+      <find>sparseDimSize</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,7 +208,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ParaStructure/ParaKVPartition.java" />
         <option value="$PROJECT_DIR$/src/main/java/Data/DataProcess.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParaStructure/Sample/SampleList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ParaStructure/Sample/Sample.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/CatParaList.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/ParaKVPartition.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/ParaKV.java" />
@@ -207,12 +215,24 @@
         <option value="$PROJECT_DIR$/src/main/java/ParaStructure/Partitioning/Partition.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParaStructure/Partitioning/AFMatrix.java" />
         <option value="$PROJECT_DIR$/src/main/java/Data/DiskAccessTime.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/InvertIndex.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/FeatureParaList.java" />
         <option value="$PROJECT_DIR$/src/main/java/Util/RandomUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Util/Prune.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ParaStructure/DimensionAccess/NewIndexOfNeedList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ParaStructure/DimensionAccess/NewIndexOfNeed.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ParaPartition/BatchBasedModelPartition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ParaStructure/Sample/Sample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Util/BatchBasedPartitionTimeTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Util/CurrentTime.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Util/CurrentTimeUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Util/sad.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Util/MemoryUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Util/DataProcessUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/InvertIndex.java" />
         <option value="$PROJECT_DIR$/src/main/java/KVStore/ParaKVStore.java" />
         <option value="$PROJECT_DIR$/src/main/java/LogisticRegression.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Global/Global.java" />
         <option value="$PROJECT_DIR$/src/main/java/Util/AccessTimeTest.java" />
       </list>
     </option>
@@ -245,8 +265,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -291,6 +309,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Global" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CtrForBigModel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CtrForBigModel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="KVStore" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -316,7 +342,25 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ParaStructure" type="462c0819:PsiDirectoryNode" />
+              <item name="DimensionAccess" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CtrForBigModel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CtrForBigModel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ParaStructure" type="462c0819:PsiDirectoryNode" />
               <item name="KVPara" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CtrForBigModel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CtrForBigModel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ParaStructure" type="462c0819:PsiDirectoryNode" />
+              <item name="Sample" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CtrForBigModel" type="b2602c69:ProjectViewProjectNode" />
@@ -334,18 +378,21 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../logistic_regression-for-ctr-predict" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -430,43 +477,45 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541467641514</updated>
-      <workItem from="1541467644656" duration="35203000" />
+      <workItem from="1541467644656" duration="36978000" />
+      <workItem from="1541658930697" duration="62690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35203000" />
+    <option name="totallyTimeSpent" value="99668000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" sideWeight="0.49973017" weight="0.32804233" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.5008095" side_tool="true" weight="0.4" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49973017" visible="true" weight="0.32910052" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24824609" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49973017" weight="0.32804233" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5008095" side_tool="true" weight="0.4" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49973017" visible="true" weight="0.32910052" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32973558" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24824609" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4991905" weight="0.39915073" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4991905" weight="0.39894179" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
@@ -484,41 +533,102 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="26" />
+      <option name="time" value="173" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/AccessTimeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///opt/jvm/jdk1.8.0_171/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5910">
+          <caret line="432" selection-start-line="432" selection-end-line="432" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/InvertIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="45" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DiskAccessTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/KVStore/ParaKVStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="66" column="85" selection-start-line="66" selection-start-column="85" selection-end-line="66" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/RandomUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/TypeExchangeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/ParaKVPartition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LogisticRegression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="114" column="15" lean-forward="true" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#628#637#0" expanded="true" />
+            <element signature="e#3409#3418#0" expanded="true" />
+            <element signature="e#4504#4513#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/Sample/SampleList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="51" lean-forward="true" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="124" column="64" lean-forward="true" selection-start-line="124" selection-start-column="64" selection-end-line="124" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/Sample/Sample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -543,6 +653,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///opt/jvm/jdk1.8.0_171/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5910">
+          <caret line="432" selection-start-line="432" selection-end-line="432" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DiskAccessTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/Partitioning/AFMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -550,38 +674,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/FeatureParaList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#213#221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/ParaKV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/CatParaList.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/DimensionAccess/NewIndexOfNeedList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+          <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#183#199#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/KVStore/ParaKVStore.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/DimensionAccess/NewIndexOfNeed.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="66" column="85" selection-start-line="66" selection-start-column="85" selection-end-line="66" selection-end-column="85" />
+        <state relative-caret-position="90">
+          <caret line="6" column="57" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#168#176#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/Sample/SampleList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#156#164#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/Sample/Sample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding>
+            <element signature="e#307#308#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaPartition/BatchBasedModelPartition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="192" selection-start-line="192" selection-end-line="192" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -595,10 +735,134 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/BatchBasedPartitionTimeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="78" column="46" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/sad.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/Prune.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/DataProcessUtil1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/CatParaList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/FeatureParaList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/ParaKV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/ParaKVPartition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///opt/jvm/jdk1.8.0_171/src.zip!/java/io/ByteArrayInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/DataProcessUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-998">
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/InvertIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#290#298#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/CurrentTimeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+          <folding>
+            <element signature="e#127#128#0" expanded="true" />
+            <element signature="e#151#152#0" expanded="true" />
+            <element signature="e#190#191#0" expanded="true" />
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Util/MemoryUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Global/Global.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -609,56 +873,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LogisticRegression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///opt/jvm/jdk1.8.0_171/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="432" selection-start-line="432" selection-end-line="432" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Util/AccessTimeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+        <state relative-caret-position="269">
+          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#839#847#0" expanded="true" />
-            <element signature="e#906#914#0" expanded="true" />
+            <element signature="e#1012#1025#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DiskAccessTime.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/KVStore/ParaKVStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParaStructure/KVPara/InvertIndex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="45" />
+        <state relative-caret-position="913">
+          <caret line="156" column="104" selection-start-line="156" selection-start-column="104" selection-end-line="156" selection-end-column="104" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParaPartition/ModelPartition.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/LogisticRegression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="244" column="6" lean-forward="true" selection-start-line="244" selection-start-column="6" selection-end-line="244" selection-end-column="6" />
+        <state relative-caret-position="132">
+          <caret line="126" column="41" lean-forward="true" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5532#5541#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -10,5 +10,9 @@ public class Sample {
         this.cat=cat;
     }
 
+    public Sample(int[] cat){
+        this.cat=cat;
+    }
+
 }
 
