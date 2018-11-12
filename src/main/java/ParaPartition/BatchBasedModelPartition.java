@@ -20,8 +20,7 @@ public class BatchBasedModelPartition {
         int sparseDimSize=sampleList.sparseDimSize;
         float pruneRate=0.007f;
         List<Integer> prunedSparseDim=new ArrayList<Integer>();
-        /*剪枝*/
-        prunedSparseDim=Prune.prune(sampleList,pruneRate);
+
         int prunedSparseDimSize=prunedSparseDim.size();
         PartitionList partitionList=  initPartition(prunedSparseDim);
 

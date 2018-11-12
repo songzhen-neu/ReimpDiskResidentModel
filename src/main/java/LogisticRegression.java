@@ -44,14 +44,16 @@ public class LogisticRegression {
         // sparseDimensionSize
         sparseDimSize=sampleList.sparseDimSize;
 
+        // batch-based划分方法
+        batchBasedMethodTest(sampleList,batchSize);
+
         // 论文中time测试，包含了bestPartitionList和最笨的测试
         reimplTimeTest(sampleList);
 
         // 不对参数进行垂直划分，直接读
         readWithoutPartition(sampleList);
 
-        // batch-based划分方法
-//        batchBasedMethodTest(sampleList,batchSize);
+
 
 
     }
@@ -115,9 +117,6 @@ public class LogisticRegression {
 
 
     public static void batchBasedMethodTest(SampleList sampleList,int batchSize)throws IOException,ClassNotFoundException{
-        long startTime,endTime;
-
-
         ParaKVStore paraKVStore=new ParaKVStore();
         CatParaList catParaList=new CatParaList();
         CatParaList catParaListRead=new CatParaList();
@@ -128,51 +127,27 @@ public class LogisticRegression {
         List<Integer> prunedSparseDim=Prune.prune(sampleList,pruneRate);
 
         // 这个partitionList是每个batch需要访问的维度
-        PartitionList batchNeedAccessList=BatchBasedPartitionTimeTest.statisticBatchBasedModelPartition(sampleList,batchSize); //这是每个batch所需要访问的维度
+        PartitionList batchNeedAccessList=BatchBasedPartitionTimeTest.statisticBatchBasedModelPartition(sampleList,batchSize);
+        SampleList batchList= BatchBasedPartitionTimeTest.batchToSampleList(batchNeedAccessList);
 
-        PartitionList bestCatPartition=BatchBasedModelPartition.getBestPartitionList(batchNeedAccessList,sampleList);  // 最佳划分
-
+        PartitionList bestPartitionList=ModelPartition.modelPartition(batchList,prunedSparseDim);
 
         featureParaList.featureParaList=ParaKVStore.initFeaturePara(featureSize);
-        catParaList.catParaList=ParaKVStore.initCatPara(bestCatPartition);
+        catParaList.catParaList=ParaKVStore.initCatPara(bestPartitionList);
 
-        /*这块是有问题的，因为虽然是batchBased但是首先要保证，catParaList中catPartition之间的元素不能相同
-        * 所以这个方法是有问题的
-        * 所以还是按照人家的方法去找，但是这次找的是batch的
-        * sampleList编程batchList
-        * */
+
         DB db=ParaKVStore.initParaKVstore(featureParaList,catParaList,prunedSparseDim,Global.dbForMiniBGDFilePath,sparseDimSize);
         paraKVStore.db=db;
 
-
-
-        SampleList batchList= BatchBasedPartitionTimeTest.batchToSampleList(batchNeedAccessList);
         CurrentTimeUtil.setStartTime();
-        AccessTimeTest.accessTimeTest(batchList,bestCatPartition,paraKVStore);
+        AccessTimeTest.accessTimeTest(batchList,bestPartitionList,paraKVStore);
         CurrentTimeUtil.setEndTime();
 
-        endTime=System.currentTimeMillis();
         System.out.println("Batch-based Read:"+CurrentTimeUtil.getExecuteTime());
-
-
-
-
-
 
         db.close();
     }
 
-    public static PartitionList getNewIndexOfNeedAccessList(PartitionList batchNeedAccessList,PartitionList bestCatPartition){
 
-        for(int i=0;i<batchNeedAccessList.partitionList.size();i++){
-            List<Integer> batch_i = batchNeedAccessList.partitionList.get(i).partition;
-            for(int j=0;j<batch_i.size();j++){
-
-            }
-        }
-
-
-        return null;
-    }
 
 }

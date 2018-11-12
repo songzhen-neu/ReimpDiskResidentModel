@@ -7,8 +7,7 @@ import ParaStructure.Partitioning.Partition;
 import ParaStructure.Partitioning.PartitionList;
 import ParaStructure.Sample.SampleList;
 import Util.Prune;
-import com.yahoo.sketches.quantiles.DoublesSketch;
-import com.yahoo.sketches.quantiles.UpdateDoublesSketch;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +50,6 @@ public class ModelPartition {
     }
 
     public static PartitionList bestModelPartition(SampleList sampleList, List<Integer> prunedSparseDim, PartitionList partitionList){
-        int catSize=sampleList.catSize;
         int sampleListSize=sampleList.sampleListSize;
         int partitionListSize=partitionList.partitionList.size();
         float[][] AF=new float[partitionListSize][partitionListSize];
@@ -86,15 +84,16 @@ public class ModelPartition {
         return bestPartitionList;
     }
 
-    public static float[][] buildAF(PartitionList partitionList, SampleList sampleList, List<Integer> prunedSparseDim) {
+    private static float[][] buildAF(PartitionList partitionList, SampleList sampleList, List<Integer> prunedSparseDim) {
         int sampleListSize = sampleList.sampleListSize;
-        int catSize = sampleList.catSize;
+        int catSize ;
         int partitionListSize = partitionList.partitionList.size();
         float[][] AF = new float[partitionListSize][partitionListSize];
 
         for (int i = 0; i < sampleListSize; i++) {  //这是个大循环，在循环所有的数据集
 
             List<Integer> catNonzeroList = new ArrayList<Integer>();
+            catSize=sampleList.sampleList.get(i).cat.length;
             for (int j = 0; j < catSize; j++) {  //这个两层循环是遍历所有数据的所有cat维度
                 int[] cat = sampleList.sampleList.get(i).cat;
                 if (cat[j] != -1 && prunedSparseDim.contains(cat[j])) { //如果cat的属性不为0,且该维度在剪枝后的统计范围内
@@ -141,7 +140,7 @@ public class ModelPartition {
 
 
 
-    public static PartitionList computeBestMerge(AFMatrix afMatrix, SampleList sampleList, List<Integer> prunedSparseDim){
+    private static PartitionList computeBestMerge(AFMatrix afMatrix, SampleList sampleList, List<Integer> prunedSparseDim){
         /*先进行第一次计算和合并*/
         float minGain=0f;
         int partitionListSize=afMatrix.partitionList.partitionList.size();
