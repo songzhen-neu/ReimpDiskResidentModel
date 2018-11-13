@@ -6,7 +6,6 @@ import ParaStructure.Partitioning.AFMatrix;
 import ParaStructure.Partitioning.Partition;
 import ParaStructure.Partitioning.PartitionList;
 import ParaStructure.Sample.SampleList;
-import Util.Prune;
 
 
 import java.util.ArrayList;
@@ -26,12 +25,6 @@ public class ModelPartition {
 
         bestPartitionList=bestModelPartition(sampleList,prunedSparseDim,partitionList);
 
-
-        for(Partition partition: bestPartitionList.partitionList){
-            if(partition.partition.size()>1){
-                System.out.println(partition.partition);
-            }
-        }
 
         return bestPartitionList;
 

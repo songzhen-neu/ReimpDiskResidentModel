@@ -5,7 +5,7 @@ import Data.DiskAccessTime;
 public interface Global {
 
     /** 磁盘access单个参数的时间、磁盘seek一个参数地址的时间 */
-    DiskAccessTime diskAccessTime=new DiskAccessTime(0.0002f,5f);
+    DiskAccessTime diskAccessTime=new DiskAccessTime(0.0002f,0.1f);
 
     /** 连续特征维度*/
     int featureSize= 13;
@@ -26,6 +26,13 @@ public interface Global {
 
     /** 剪枝率*/
     float pruneRate=0.001f;
+    Double freqThreshold=100.0;
+
+    /** 如果是false代表不用sketch获取freqThreshold*/
+    boolean usePruneRate=false;
+
+    /** Partition包含元素个数的最小值*/
+    int minPartitionSize=2;
 
 
 

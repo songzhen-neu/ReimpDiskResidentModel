@@ -13,7 +13,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import static jdk.nashorn.internal.ir.debug.ObjectSizeCalculator.getObjectSize;
+
 
 public class ParaKVStore {
 
@@ -37,6 +39,7 @@ public class ParaKVStore {
         // 对于密集维度直接整个list存下就可以了,f表示feature
         db.put(("f").getBytes(),TypeExchangeUtil.toByteArray(featureParaList));
 
+
         // 对于cat参数要一个partition一个partition的写,c表示按照最佳划分，存储的cat离散属性
         for(int i=0;i<catParaList.catParaList.size();i++){
             ParaKVPartition paraKVPartition=catParaList.catParaList.get(i);
@@ -48,7 +51,7 @@ public class ParaKVStore {
 
 
         for(int i=0;i<sparseDimSize;i++){
-            if(prunedSparseDim.contains(i)==false){
+            if(prunedSparseDim.contains(i)==false ){
                 float initValue=RandomUtil.getRandomValue(-0.1f,0.1f);
                 ParaKV paraKV=new ParaKV(i,initValue);
                 db.put(("s"+i).getBytes(),TypeExchangeUtil.toByteArray(paraKV));
@@ -153,15 +156,13 @@ public class ParaKVStore {
         for (int j = 0; j < invertIndex.invertIndex.size(); j++) {
             String index = invertIndex.invertIndex.get(j);
             invertIndexes.invertIndex.add(index);
-            if (index.contains("c") && !readCatIndex.contains(index) ) {
+            if (index.contains("c")) {
                 ParaKVPartition paraKVPartition = (ParaKVPartition) ParaKVStore.getParameter(index, db);
                 readCatParaList.catParaList.add(paraKVPartition);
-                readCatIndex.add(index);
 
-            } else if (index.contains("s") && !readSingleCIndex.contains(index)) {
+            } else if (index.contains("s") ) {
                 ParaKV paraKV = (ParaKV) ParaKVStore.getParameter(index, db);
                 readSingleCatParaList.add(paraKV);
-                readSingleCIndex.add(index);
             }
 
         }

@@ -1,17 +1,13 @@
 
 import Global.Global;
-import ParaPartition.BatchBasedModelPartition;
 import ParaPartition.ModelPartition;
-import ParaStructure.KVPara.CatParaList;
-import ParaStructure.KVPara.FeatureParaList;
+import ParaStructure.KVPara.*;
 import KVStore.ParaKVStore;
 import ParaStructure.Partitioning.PartitionList;
 import ParaStructure.Sample.SampleList;
 import Util.*;
 import org.iq80.leveldb.DB;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,12 +23,16 @@ public class LogisticRegression {
 
         String fileName=Global.dataFilePath;
         int batchSize=Global.batchSize;
-        SampleList sampleList=new SampleList();
+        SampleList sampleList;
 
         // 定义feature和cat大小
 
         int catSize=Global.catSize;
 
+
+
+        // 测试ParaKV和包含一个ParaKV的ParaKVList的大小
+        TestUtil.spaceCostTest();
 
 
         // 处理并读取训练集数据到sampleList中
@@ -47,11 +47,13 @@ public class LogisticRegression {
         // batch-based划分方法
         batchBasedMethodTest(sampleList,batchSize);
 
+        // 不对参数进行垂直划分，直接读
+        readWithoutPartition(sampleList);
+
         // 论文中time测试，包含了bestPartitionList和最笨的测试
         reimplTimeTest(sampleList);
 
-        // 不对参数进行垂直划分，直接读
-        readWithoutPartition(sampleList);
+
 
 
 
@@ -75,10 +77,22 @@ public class LogisticRegression {
 
         // 维度剪枝
         float pruneRate=Global.pruneRate;
-        List<Integer> prunedSparseDim=Prune.prune(sampleList,pruneRate);
+        List<Integer> prunedSparseDim=PruneUtil.prune(sampleList,pruneRate);
 
         // 模型划分，得到最佳划分
+        CurrentTimeUtil.setStartTime();
         PartitionList bestPartitionList= ModelPartition.modelPartition(sampleList,prunedSparseDim);
+
+        // 划分中有一些划分只包含一个维度，这样的维度定义成single ParaKV就行了，不用定义成list。
+        prunedSparseDim=PruneUtil.removeOnceItemOfBPL(bestPartitionList);
+        bestPartitionList=PartitionList.getBestPartitionListWithNoOnceItem(bestPartitionList);
+
+        // 显示bestPartitionList
+        PartitionList.showBestPartitionList(bestPartitionList);
+
+        CurrentTimeUtil.setEndTime();
+        System.out.println("sgdPartitionTime"+CurrentTimeUtil.getExecuteTime());
+
 
         // 初始化离散和连续特征对应的参数列表（离散属性已对应上最佳划分）
         featureParaList.featureParaList=ParaKVStore.initFeaturePara(featureSize);
@@ -90,8 +104,9 @@ public class LogisticRegression {
 
 
         // bestPartitionList,遍历所有的样本，一个一个样本的读取所有数据
+        List<InvertIndex> invertIndices=AccessUtil.getInvertIndices(sampleList,bestPartitionList);
         CurrentTimeUtil.setStartTime();
-        AccessTimeTest.accessTimeTest(sampleList,bestPartitionList,paraKVStore);
+        AccessUtil.accessParaByInvertIndices(invertIndices,paraKVStore);
         CurrentTimeUtil.setEndTime();
         System.out.println("bestPartitionListRead:"+CurrentTimeUtil.getExecuteTime());
 
@@ -105,9 +120,9 @@ public class LogisticRegression {
         ParaKVStore paraKVStore=new ParaKVStore();
         DB db=ParaKVStore.buildLevelDB(Global.dbForNoVerticalPartitionPath);
         paraKVStore.db=db;
-        AccessTimeTest.initPara(sparseDimSize,db);
+        AccessUtil.initPara(sparseDimSize,db);
         CurrentTimeUtil.setStartTime();
-        AccessTimeTest.getPara(sampleList,db);
+        AccessUtil.getPara(sampleList,paraKVStore);
         CurrentTimeUtil.setEndTime();
         System.out.println("singleRead:"+CurrentTimeUtil.getExecuteTime());
 
@@ -119,30 +134,43 @@ public class LogisticRegression {
     public static void batchBasedMethodTest(SampleList sampleList,int batchSize)throws IOException,ClassNotFoundException{
         ParaKVStore paraKVStore=new ParaKVStore();
         CatParaList catParaList=new CatParaList();
-        CatParaList catParaListRead=new CatParaList();
         FeatureParaList featureParaList=new FeatureParaList();
 
         // 维度剪枝
         float pruneRate=Global.pruneRate;
-        List<Integer> prunedSparseDim=Prune.prune(sampleList,pruneRate);
+        List<Integer> prunedSparseDim=PruneUtil.prune(sampleList,pruneRate);
 
         // 这个partitionList是每个batch需要访问的维度
-        PartitionList batchNeedAccessList=BatchBasedPartitionTimeTest.statisticBatchBasedModelPartition(sampleList,batchSize);
-        SampleList batchList= BatchBasedPartitionTimeTest.batchToSampleList(batchNeedAccessList);
+        PartitionList batchNeedAccessList=BatchUtil.getBatchNeedPara(sampleList,batchSize);
+        SampleList batchList= BatchUtil.batchToSampleList(batchNeedAccessList);
 
+        CurrentTimeUtil.setStartTime();
         PartitionList bestPartitionList=ModelPartition.modelPartition(batchList,prunedSparseDim);
+
+        // 下面两行代码分别是从剪枝后的维度列表和最佳划分中，除去只包含一个维度的划分
+        prunedSparseDim=PruneUtil.removeOnceItemOfBPL(bestPartitionList);
+        bestPartitionList=PartitionList.getBestPartitionListWithNoOnceItem(bestPartitionList);
+
+        // 显示bestPartitionList
+        PartitionList.showBestPartitionList(bestPartitionList);
+
+        CurrentTimeUtil.setEndTime();
+        System.out.println("batchPartitionTime:"+CurrentTimeUtil.getExecuteTime());
+
 
         featureParaList.featureParaList=ParaKVStore.initFeaturePara(featureSize);
         catParaList.catParaList=ParaKVStore.initCatPara(bestPartitionList);
 
 
+
         DB db=ParaKVStore.initParaKVstore(featureParaList,catParaList,prunedSparseDim,Global.dbForMiniBGDFilePath,sparseDimSize);
         paraKVStore.db=db;
 
-        CurrentTimeUtil.setStartTime();
-        AccessTimeTest.accessTimeTest(batchList,bestPartitionList,paraKVStore);
-        CurrentTimeUtil.setEndTime();
+        List<InvertIndex> invertIndices=AccessUtil.getInvertIndices(batchList,bestPartitionList);
 
+        CurrentTimeUtil.setStartTime();
+        AccessUtil.accessParaByInvertIndices(invertIndices,paraKVStore);
+        CurrentTimeUtil.setEndTime();
         System.out.println("Batch-based Read:"+CurrentTimeUtil.getExecuteTime());
 
         db.close();
