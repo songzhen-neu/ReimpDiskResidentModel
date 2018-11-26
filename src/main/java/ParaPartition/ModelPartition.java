@@ -6,14 +6,18 @@ import ParaStructure.Partitioning.AFMatrix;
 import ParaStructure.Partitioning.Partition;
 import ParaStructure.Partitioning.PartitionList;
 import ParaStructure.Sample.SampleList;
+import Util.AccessUtil;
+import Util.ListToHashset;
+import com.sun.javafx.iio.gif.GIFImageLoader2;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ModelPartition {
     public static PartitionList modelPartition(SampleList sampleList,List<Integer> prunedSparseDim){
-        int sparseDimSize= sampleList.sparseDimSize;
 
         int prunedSparseDimSize=prunedSparseDim.size();
         PartitionList partitionList=  initPartition(prunedSparseDim);
@@ -43,18 +47,12 @@ public class ModelPartition {
     }
 
     public static PartitionList bestModelPartition(SampleList sampleList, List<Integer> prunedSparseDim, PartitionList partitionList){
-        int sampleListSize=sampleList.sampleListSize;
         int partitionListSize=partitionList.partitionList.size();
-        float[][] AF=new float[partitionListSize][partitionListSize];
-        PartitionList bestPartitionList=new PartitionList();
+        float[][] AF;
+        PartitionList bestPartitionList;
         AFMatrix afMatrix=new AFMatrix();
-        float[][] cost=new float[partitionListSize][partitionListSize];
-
 
         /*这里为剪枝后的维度构建map*/
-
-
-
         AF=buildAF(partitionList,sampleList,prunedSparseDim);
 
 
@@ -78,18 +76,21 @@ public class ModelPartition {
     }
 
     private static float[][] buildAF(PartitionList partitionList, SampleList sampleList, List<Integer> prunedSparseDim) {
-        int sampleListSize = sampleList.sampleListSize;
+        int samplePrunedSize=sampleList.samplePrunedSize ;
         int catSize ;
         int partitionListSize = partitionList.partitionList.size();
         float[][] AF = new float[partitionListSize][partitionListSize];
 
-        for (int i = 0; i < sampleListSize; i++) {  //这是个大循环，在循环所有的数据集
+        Set<Integer> setPrunedSparseDim=ListToHashset.listToHashSetInt(prunedSparseDim);
+
+        for (int i = 0; i < samplePrunedSize; i++) {  //这是个大循环，在循环所有的数据集
 
             List<Integer> catNonzeroList = new ArrayList<Integer>();
-            catSize=sampleList.sampleList.get(i).cat.length;
+            catSize=sampleList.sampleList.get(i*(Global.maxSampleListSize/Global.samplePrunedSize)).cat.length;
             for (int j = 0; j < catSize; j++) {  //这个两层循环是遍历所有数据的所有cat维度
-                int[] cat = sampleList.sampleList.get(i).cat;
-                if (cat[j] != -1 && prunedSparseDim.contains(cat[j])) { //如果cat的属性不为0,且该维度在剪枝后的统计范围内
+                int[] cat = sampleList.sampleList.get(i*(Global.maxSampleListSize/Global.samplePrunedSize)).cat;
+
+                if (cat[j] != -1 && setPrunedSparseDim.contains(cat[j])) { //如果cat的属性不为missing value,且该维度在剪枝后的统计范围内
 //                    AF[prunedSparseDimMap.get(cat[j])][prunedSparseDimMap.get(cat[j])]--;   //这个不定义变量了，cat[j]就是不为0的稀疏维度
                     catNonzeroList.add(cat[j]);
                 }
@@ -105,11 +106,13 @@ public class ModelPartition {
 //            }
 
             /*如果这一条数据的cat属性能够组合出来Partition，就说明这个partition在这条数据中出现了*/
+
+            Set<Integer> setCatNonzeroList=ListToHashset.listToHashSetInt(catNonzeroList);
             List<Integer> catContainsPartition=new ArrayList<Integer>();
             for(int l=0;l<partitionListSize;l++){
                 Partition partition=partitionList.partitionList.get(l);
                 for(int m=0;m<partition.partition.size();m++){
-                    if(catNonzeroList.contains(partition.partition.get(m))){
+                    if(setCatNonzeroList.contains(partition.partition.get(m))){
                         if(m==(partition.partition.size()-1)){
                             catContainsPartition.add(l);
                         }
@@ -135,7 +138,7 @@ public class ModelPartition {
 
     private static PartitionList computeBestMerge(AFMatrix afMatrix, SampleList sampleList, List<Integer> prunedSparseDim){
         /*先进行第一次计算和合并*/
-        float minGain=0f;
+        float minGain=Global.minGain;
         int partitionListSize=afMatrix.partitionList.partitionList.size();
         for(int i=0;i<partitionListSize;i++){
             for(int j=0;j<partitionListSize;j++){
@@ -208,9 +211,26 @@ public class ModelPartition {
      * */
 
     public static float cost( int singlePartitionSize){
+        /**
+        *@Description: 这是计算代价损失，表示，如果划分中有一个元素，那么就是按照ParaKV的结构存的，
+         * 如果大于1就是按照ParaKVPartition存的。一个ParaKV需要的字节数是70
+         * 而一个ParaKVPartition的基础空间是200，每增加一个元素是增加18
+        *@Param: [singlePartitionSize]
+        *@return: float
+        *@Author: SongZhen
+        *@date: 上午8:24 18-11-16
+        */
+        if(singlePartitionSize==1){
+            return (Global.diskAccessTime.seekSingleTime+Global.paraKVSize*Global.diskAccessTime.readSingleDimTime);
+        }
 
-        return (Global.diskAccessTime.seekSingleTime+singlePartitionSize*Global.diskAccessTime.readSingleDimTime);
+        else {
+            return (Global.diskAccessTime.seekSingleTime+(singlePartitionSize*Global.singleParaKVOfPartition+Global.paraKVPartitionBasicSize)*Global.diskAccessTime.readSingleDimTime);
+        }
+
     }
+
+
 
 
 

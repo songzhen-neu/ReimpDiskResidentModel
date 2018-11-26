@@ -158,11 +158,11 @@ public class ParaKVStore {
             invertIndexes.invertIndex.add(index);
             if (index.contains("c")) {
                 ParaKVPartition paraKVPartition = (ParaKVPartition) ParaKVStore.getParameter(index, db);
-                readCatParaList.catParaList.add(paraKVPartition);
+//                readCatParaList.catParaList.add(paraKVPartition);
 
             } else if (index.contains("s") ) {
                 ParaKV paraKV = (ParaKV) ParaKVStore.getParameter(index, db);
-                readSingleCatParaList.add(paraKV);
+//                readSingleCatParaList.add(paraKV);
             }
 
         }

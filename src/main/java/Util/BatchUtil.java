@@ -1,5 +1,6 @@
 package Util;
 
+import Global.Global;
 import ParaStructure.KVPara.CatParaList;
 import ParaStructure.KVPara.ParaKV;
 import ParaStructure.KVPara.ParaKVPartition;
@@ -7,6 +8,7 @@ import ParaStructure.Partitioning.Partition;
 import ParaStructure.Partitioning.PartitionList;
 import ParaStructure.Sample.Sample;
 import ParaStructure.Sample.SampleList;
+import com.sun.javafx.iio.gif.GIFImageLoader2;
 import org.iq80.leveldb.DB;
 
 import java.io.IOException;
@@ -37,6 +39,7 @@ public class BatchUtil {
             }
             partitionList.partitionList.add(partition);
         }
+
         return partitionList;
     }
 
@@ -44,21 +47,24 @@ public class BatchUtil {
 
 
 
-    public static SampleList batchToSampleList(PartitionList batchNeedAccessList){
-        SampleList sampleList=new SampleList();
+    public static SampleList batchToSampleList(PartitionList batchNeedAccessList,SampleList sampleList){
+        SampleList batchList=new SampleList();
         for(Partition partition:batchNeedAccessList.partitionList){
             int[] cats= new int[partition.partition.size()];
             for(int i=0;i<cats.length;i++){
                 cats[i]=partition.partition.get(i);
             }
             Sample sample=new Sample(cats);
-            sampleList.sampleList.add(sample);
+            batchList.sampleList.add(sample);
         }
-        sampleList.sampleListSize=sampleList.sampleList.size();
+        batchList.sampleListSize=batchList.sampleList.size();
+        batchList.samplePrunedSize=Global.samplePrunedSize/Global.batchSize;
+        batchList.sparseDimSize=sampleList.sparseDimSize;
 
 
 
 
-        return sampleList;
+
+        return batchList;
     }
 }
